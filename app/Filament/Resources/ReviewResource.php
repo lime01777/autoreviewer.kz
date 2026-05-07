@@ -8,6 +8,7 @@ use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Actions;
 use App\Filament\Resources\ReviewResource\Pages;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\Filter;
@@ -152,33 +153,33 @@ class ReviewResource extends Resource
                     })
             ])
             ->actions([
-                Tables\Actions\ActionGroup::make([
-                    Tables\Actions\Action::make('approve')
+                Actions\ActionGroup::make([
+                    Actions\Action::make('approve')
                         ->label('Одобрить')
                         ->icon('heroicon-o-check-circle')
                         ->color('success')
                         ->action(fn (Review $record) => $record->update(['status' => 'approved']))
                         ->visible(fn (Review $record) => $record->status !== 'approved'),
-                    Tables\Actions\Action::make('reject')
+                    Actions\Action::make('reject')
                         ->label('Отклонить')
                         ->icon('heroicon-o-x-circle')
                         ->color('danger')
                         ->action(fn (Review $record) => $record->update(['status' => 'rejected']))
                         ->visible(fn (Review $record) => $record->status !== 'rejected'),
-                    Tables\Actions\Action::make('reset')
+                    Actions\Action::make('reset')
                         ->label('Вернуть на проверку')
                         ->icon('heroicon-o-arrow-path')
                         ->color('warning')
                         ->action(fn (Review $record) => $record->update(['status' => 'pending']))
                         ->visible(fn (Review $record) => $record->status !== 'pending'),
-                    Tables\Actions\EditAction::make(),
-                    Tables\Actions\DeleteAction::make(),
+                    Actions\EditAction::make(),
+                    Actions\DeleteAction::make(),
                 ])
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\BulkAction::make('approve_selected')
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
+                    Actions\BulkAction::make('approve_selected')
                         ->label('Одобрить выбранные')
                         ->icon('heroicon-o-check')
                         ->color('success')

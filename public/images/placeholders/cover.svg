@@ -1,0 +1,15 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="600" fill="#0F172A"/>
+    <defs>
+        <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.2" />
+            <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0" />
+        </radialGradient>
+    </defs>
+    <rect width="1200" height="600" fill="url(#grad1)"/>
+    <path d="M400 400C400 380 420 360 450 360H750C780 360 800 380 800 400V450H400V400Z" fill="#1E293B"/>
+    <path d="M450 360L500 280H700L750 360H450Z" fill="#334155"/>
+    <circle cx="480" cy="450" r="30" fill="#0F172A" stroke="#1E293B" stroke-width="8"/>
+    <circle cx="720" cy="450" r="30" fill="#0F172A" stroke="#1E293B" stroke-width="8"/>
+    <text x="50%" y="540" text-anchor="middle" fill="#475569" font-family="Arial" font-weight="900" font-size="24" style="text-transform: uppercase; letter-spacing: 0.2em;">autoreviewer</text>
+</svg>

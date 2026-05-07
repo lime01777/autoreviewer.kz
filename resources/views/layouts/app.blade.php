@@ -36,17 +36,35 @@
                             DEFAULT: '#2563eb',
                             50: '#eff6ff',
                             100: '#dbeafe',
+                            200: '#bfdbfe',
                             600: '#2563eb',
                             700: '#1d4ed8',
+                            800: '#1e40af',
                             900: '#1e3a8a',
                         },
-                        secondary: '#f8fafc',
-                        accent: '#f59e0b',
+                        slate: {
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        accent: {
+                            DEFAULT: '#f59e0b',
+                            50: '#fffbeb',
+                            600: '#d97706',
+                        },
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Outfit', 'sans-serif'],
                     },
+                    boxShadow: {
+                        'premium': '0 20px 50px -12px rgba(0, 0, 0, 0.05)',
+                        'xl-premium': '0 30px 60px -15px rgba(37, 99, 235, 0.1)',
+                    },
+                    borderRadius: {
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
+                        '5xl': '2.5rem',
+                    }
                 }
             }
         }
@@ -54,13 +72,34 @@
     <style>
         [x-cloak] { display: none !important; }
         .glass {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes slow-zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .animate-slow-zoom {
+            animation: slow-zoom 20s linear infinite alternate;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="font-sans antialiased bg-[#fcfdfe] text-slate-900 overflow-x-hidden" x-data="{ mobileMenuOpen: false }">
+<body class="font-sans antialiased bg-[#f8fafc] text-slate-900 overflow-x-hidden selection:bg-primary selection:text-white" x-data="{ mobileMenuOpen: false }">
     <div class="min-h-screen flex flex-col">
         <!-- Navigation -->
         <nav class="glass border-b border-slate-200/60 sticky top-0 z-[100]">

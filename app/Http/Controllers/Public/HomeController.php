@@ -46,9 +46,27 @@ class HomeController extends Controller
             ->get()
             ->groupBy('position');
 
+        $popularDealerships = Dealership::where('status', 'published')
+            ->withCount([
+                'reviews as reviews_count' => function ($query) {
+                    $query->where('status', 'approved');
+                },
+            ])
+            ->withAvg([
+                'reviews as rating_avg' => function ($query) {
+                    $query->where('status', 'approved');
+                },
+            ], 'rating')
+            ->with(['categories'])
+            ->orderByDesc('reviews_count')
+            ->orderByDesc('rating_avg')
+            ->take(6)
+            ->get();
+
         return view('public.index', compact(
             'categories',
             'featuredDealerships',
+            'popularDealerships',
             'latestReviews',
             'latestNews',
             'banners'

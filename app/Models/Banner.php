@@ -27,4 +27,15 @@ class Banner extends Model
                 $q->whereNull('ends_at')->orWhere('ends_at', '>=', now());
             });
     }
+
+    /**
+     * Get image URL with fallback
+     */
+    public function getImageUrlAttribute(): string
+    {
+        if ($this->image && \Storage::disk('public')->exists($this->image)) {
+            return \Storage::disk('public')->url($this->image);
+        }
+        return asset('images/placeholders/banner.svg');
+    }
 }
